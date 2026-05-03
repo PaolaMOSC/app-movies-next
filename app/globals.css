@@ -15,6 +15,22 @@
   transition-timing-function: ease;
 }
 
-/* Hide scrollbar for genre pill row */
+/* Hide scrollbar utility */
 .scrollbar-hide::-webkit-scrollbar { display: none; }
 .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Custom scrollbar for genre filter */
+.genre-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #ef4444 transparent;
+}
+.genre-scroll::-webkit-scrollbar {
+  height: 3px;
+}
+.genre-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.genre-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #ef4444, #f97316);
+  border-radius: 99px;
+}
