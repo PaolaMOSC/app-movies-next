@@ -75,60 +75,62 @@ async function PageShell({
   children: React.ReactNode;
 }) {
   return (
-    <main className="min-h-screen bg-neutral-100 dark:bg-zinc-950 text-zinc-900 dark:text-white px-4 sm:px-6 pb-16">
-      {/* ── Header ── */}
-      <header className="relative max-w-3xl mx-auto pt-10 pb-6 text-center">
-        {/* Theme toggle — absolute top-right */}
-        <div className="absolute right-0 top-10">
-          <ThemeToggle />
-        </div>
-
-        {/* Clapperboard logo */}
-        <div className="flex justify-center mb-5">
-          <ClapperboardLogo />
-        </div>
-
-        {/* Title */}
-        <h1 className="text-4xl sm:text-5xl font-black tracking-[0.12em] uppercase mb-1 leading-none">
-          <span className="text-zinc-900 dark:text-white">PAOLA </span>
-          <span
-            className="text-transparent bg-clip-text"
-            style={{ backgroundImage: "linear-gradient(135deg,#ef4444,#f97316)" }}
-          >
-            FILM
-          </span>
-          <span className="text-zinc-900 dark:text-white"> APP</span>
-        </h1>
-
-        {/* Tagline */}
-        <p className="text-xs font-semibold tracking-[0.35em] uppercase text-zinc-400 dark:text-zinc-500 mt-2">
-          Trailer
-        </p>
-
-        {/* Separator */}
-        <div className="flex items-center gap-3 mt-4 mb-6">
-          <div className="flex-1 h-px bg-zinc-200 dark:bg-zinc-800" />
-          <span className="text-red-500 text-xs">◆</span>
-          <div className="flex-1 h-px bg-zinc-200 dark:bg-zinc-800" />
-        </div>
-
-        {/* Search */}
-        <Suspense>
-          <SearchInput />
-        </Suspense>
-
-        {/* Genre filter */}
-        {genres.length > 0 && (
-          <div className="mt-4">
-            <Suspense>
-              <GenreFilter genres={genres} />
-            </Suspense>
+    <main className="min-h-screen bg-neutral-100 dark:bg-zinc-950 text-zinc-900 dark:text-white pb-16">
+      {/* ── Sticky header wrapper ── */}
+      <div className="sticky top-0 z-20 bg-neutral-100/95 dark:bg-zinc-950/95 backdrop-blur-sm border-b border-zinc-200 dark:border-zinc-800 px-4 sm:px-6">
+        <header className="relative max-w-3xl mx-auto pt-10 pb-6 text-center">
+          {/* Theme toggle — absolute top-right */}
+          <div className="absolute right-0 top-10">
+            <ThemeToggle />
           </div>
-        )}
-      </header>
+
+          {/* Clapperboard logo */}
+          <div className="flex justify-center mb-5">
+            <ClapperboardLogo />
+          </div>
+
+          {/* Title */}
+          <h1 className="text-4xl sm:text-5xl font-black tracking-[0.12em] uppercase mb-1 leading-none">
+            <span className="text-zinc-900 dark:text-white">PAOLA </span>
+            <span
+              className="text-transparent bg-clip-text"
+              style={{ backgroundImage: "linear-gradient(135deg,#ef4444,#f97316)" }}
+            >
+              FILM
+            </span>
+            <span className="text-zinc-900 dark:text-white"> APP</span>
+          </h1>
+
+          {/* Tagline */}
+          <p className="text-xs font-semibold tracking-[0.35em] uppercase text-zinc-400 dark:text-zinc-500 mt-2">
+            Trailer
+          </p>
+
+          {/* Separator */}
+          <div className="flex items-center gap-3 mt-4 mb-6">
+            <div className="flex-1 h-px bg-zinc-200 dark:bg-zinc-800" />
+            <span className="text-red-500 text-xs">◆</span>
+            <div className="flex-1 h-px bg-zinc-200 dark:bg-zinc-800" />
+          </div>
+
+          {/* Search */}
+          <Suspense>
+            <SearchInput />
+          </Suspense>
+
+          {/* Genre filter */}
+          {genres.length > 0 && (
+            <div className="mt-4">
+              <Suspense>
+                <GenreFilter genres={genres} />
+              </Suspense>
+            </div>
+          )}
+        </header>
+      </div>
 
       {/* ── Content ── */}
-      <div className="max-w-7xl mx-auto">{children}</div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-6">{children}</div>
     </main>
   );
 }
