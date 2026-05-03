@@ -59,3 +59,8 @@ export async function getMovieVideos(id: string) {
   const data = await tmdbFetch(`/movie/${id}/videos?language=es-ES`);
   return VideosResponseSchema.parse(data);
 }
+
+export async function getTrendingMovies() {
+  const data = await tmdbFetch(`/trending/movie/week?language=es-ES`);
+  return MoviesResponseSchema.parse(data);
+}
